@@ -1,0 +1,80 @@
+﻿spring: 
+  profiles:
+    active:
+    - dev
+--- 
+server:
+  port: 8001
+spring: 
+   profiles: dev
+   application: 
+    name: microservicecloud-config-dept-client
+    datasource:
+       url: jdbc:mysql://127.0.0.1:3306/lin?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+       username: root
+       password: 123
+       driver-class-name: com.mysql.cj.jdbc.Driver
+   
+mybatis:
+  #mybatis配置文件所在路径
+  config-location: classpath:mybatis/mybatis_cfg.xml  
+  #所有Entity别名类所在包
+  type-aliases-package: org.cloud.api.po               
+  mapper-locations:
+    - classpath:mybatis/mapper/*.xml    
+ 
+eureka: 
+#客户端注册进eureka服务列表内
+  client: 
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+ 
+info:
+  app:
+   name: microserviceclcloud-spring-cloud-config01
+#  company:
+#     name: www.lin.com
+   build:
+    artifactId: "@project.artifactId@"
+    version: "@project.version@"
+---
+server:
+  port: 8001
+spring: 
+   profiles: test
+   application: 
+    name: microservicecloud-config-dept-client
+   datasource:
+       url: jdbc:mysql://127.0.0.1:3306/lin?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+       username: root
+       password: 123
+       driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  
+mybatis:
+  #mybatis配置文件所在路径
+  config-location: classpath:mybatis/mybatis_cfg.xml  
+  #所有Entity别名类所在包
+  type-aliases-package: org.cloud.api.po               
+  mapper-locations:
+    - classpath:mybatis/mapper/*.xml  
+ 
+eureka: 
+  client: #客户端注册进eureka服务列表内
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+ 
+info:
+  app:
+   name: microserviceclcloud-spring-cloud-config02
+#  company:
+#     name: www.lin.com
+   build:
+    artifactId: "@project.artifactId@"
+    version: "@project.version@"
