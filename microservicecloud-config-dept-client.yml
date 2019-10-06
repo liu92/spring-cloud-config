@@ -9,7 +9,7 @@ spring:
    profiles: dev
    application: 
     name: microservicecloud-config-dept-client
-    datasource:
+   datasource:
        url: jdbc:mysql://127.0.0.1:3306/linone?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
        username: root
        password: 123
